@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "taskbuddy-mobile",
+    "name": "TaskBuddy",
     "slug": "taskbuddy-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,13 +17,14 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "io.rtn.taskbuddy"
     },
     "web": {
       "favicon": "./assets/favicon.png"
