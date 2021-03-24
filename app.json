@@ -28,6 +28,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "TaskBuddy is a fast, efficient, simple, and useful To-do List app that matches all your day-to-day needs. Have a science project due? Log it on TaskBuddy! Need to buy groceries? Log it on TaskBuddy."
   }
 }
