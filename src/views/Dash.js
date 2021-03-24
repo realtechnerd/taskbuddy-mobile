@@ -16,8 +16,11 @@ export default function Dash({ navigation }) {
   const [title, setTitle] = useState("");
   const [due, setDue] = useState("");
   const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
+  const [snackbarVisible, setSnackbarVisible] = useState(false);
   const [loading, setLoading] = useState(false);
   const { currentUser } = useAuth();
+  const onToggleSnackBar = () => setVisible(!visible);
+  const onDismissSnackBar = () => setVisible(false);
 
   function guidGenerator() {
     var S4 = function () {
@@ -82,6 +85,7 @@ export default function Dash({ navigation }) {
       .catch((err) => {
         console.error(err);
       });
+    onToggleSnackbar();
   }
 
   useEffect(() => {
@@ -135,7 +139,7 @@ export default function Dash({ navigation }) {
           setDatePickerVisibility(false);
         }}
         onCancel={() => setDatePickerVisibility(false)}
-        minimumDate={Date.now()}
+        minimumDate={new Date()}
       />
 
       {!loading ? (
@@ -146,29 +150,33 @@ export default function Dash({ navigation }) {
             <View style={styles.tasks}>
               {items &&
                 items.map((i) => (
-                  <Card.Title
-                    key={i.id}
-                    title={i.title}
-                    titleNumberOfLines={3}
-                    titleStyle={{ fontFamily: "Manrope_Bold" }}
-                    subtitle={
-                      !i.due.seconds
-                        ? ""
-                        : `Due: ${moment.unix(i.due.seconds).format("LL")}`
-                    }
-                    subtitleStyle={{
-                      fontFamily: "Manrope_Bold",
-                    }}
-                    right={(props) => (
-                      <IconButton
-                        {...props}
-                        icon="checkbox-blank-circle-outline"
-                        color="#ff416c"
-                        onPress={() => deleteTask(i)}
-                      />
-                    )}
-                    style={styles.card}
-                  />
+                  <View onPress={() => console.log("hei")}>
+                    <Card.Title
+                      key={i.id}
+                      title={i.title}
+                      titleNumberOfLines={3}
+                      titleStyle={{ fontFamily: "Manrope_Bold" }}
+                      subtitle={
+                        !i.due.seconds
+                          ? ""
+                          : `Due: ${moment.unix(i.due.seconds).format("LL")}`
+                      }
+                      subtitleStyle={{
+                        fontFamily: "Manrope_Bold",
+                      }}
+                      right={(props) => (
+                        <>
+                          <IconButton
+                            {...props}
+                            icon="checkbox-blank-circle-outline"
+                            color="#ff416c"
+                            onPress={() => deleteTask(i)}
+                          />
+                        </>
+                      )}
+                      style={styles.card}
+                    />
+                  </View>
                 ))}
             </View>
           )}

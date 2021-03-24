@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, StatusBar, Linking } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { Appbar, Menu } from "react-native-paper";
+import { Appbar, Menu, Divider } from "react-native-paper";
 import moment from "moment";
 import { useAuth } from "../contexts/AuthContext";
 
@@ -10,6 +10,9 @@ export default function DashHeader(props) {
   const openMenu = () => setVisible(true);
   const closeMenu = () => setVisible(false);
   const { logout } = useAuth();
+
+  const supportEmail = "realtechnerd.help@gmail.com";
+  const appID = "io.rtn.taskbuddy";
 
   return (
     <>
@@ -31,6 +34,22 @@ export default function DashHeader(props) {
           }
         >
           <Menu.Item
+            icon="help-circle"
+            title="Support"
+            onPress={() => Linking.openURL(`mailto:${supportEmail}`)}
+            titleStyle={{ fontFamily: "Manrope_Bold" }}
+          />
+          <Menu.Item
+            icon="google-play"
+            title="View on Play"
+            onPress={() =>
+              Linking.openURL(
+                `https://play.google.com/store/apps/details?id=${appID}`
+              )
+            }
+            titleStyle={{ fontFamily: "Manrope_Bold" }}
+          />
+          <Menu.Item
             icon="web"
             title="TB Web"
             onPress={() =>
@@ -38,6 +57,7 @@ export default function DashHeader(props) {
             }
             titleStyle={{ fontFamily: "Manrope_Bold" }}
           />
+          <Divider />
           <Menu.Item
             icon="logout"
             title="Sign Out"

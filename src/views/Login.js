@@ -17,8 +17,8 @@ export default function Login({ navigation }) {
 
     if (error.code === "auth/wrong-password") {
       return "Incorrect password!";
-    } else if (error.code === "auth/email-already-exists") {
-      return "This email already exists.";
+    } else if (error.code === "auth/email-already-in-use") {
+      return "This email is already in use.";
     } else if (error.code === "auth/user-not-found") {
       return "That user does not exist.";
     } else {
