@@ -104,6 +104,10 @@ export default function Dash({ navigation }) {
     <>
       <DashHeader title="Welcome" appbartitle="TaskBuddy" />
 
+      <TouchableOpacity onPress={() => console.log(process.env.EXPO_TEST)}>
+        <Text>Hey</Text>
+      </TouchableOpacity>
+
       <View
         style={{
           flexDirection: "row",
